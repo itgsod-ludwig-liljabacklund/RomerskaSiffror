@@ -6,10 +6,10 @@ def romanize(input)
   roman = ""
 
   while input > 0
-    numerals.select! {|x| x <= input}
-    amount = numerals.to_a.flatten
-    roman << amount[1]
-    input -= amount[0]
+    numerals.select! {|x| x <= input} #selects all hash keys that contain a value that is smaller than input
+    amount = numerals.to_a.flatten #flattens the numerals hash to an array
+    roman << amount[1] #inserts the input's corresponding symbol(s), which is the closest neighbour in the now flattened hash (e.g. 520 -> "D")  
+    input -= amount[0] #removes the value of the previously selected symbol from the input and loops everything until input == 0
   end
 
   return roman
